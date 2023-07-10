@@ -18,7 +18,7 @@ metadata:
   labels:
     app: lc-assignment-redis
 spec:
- volumeMounts:
+  volumeMounts:
   - mountPath: /data
     name: lc-assignment-redis-data
   volumes:
