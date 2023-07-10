@@ -7,6 +7,6 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Mb
+      storage: 10M
   storageClassName: rbd
 
