@@ -6,7 +6,7 @@ spec:
   selector:
     app: lc-assignment-mongo
   ports:
-    - port: 6379
+    - port: 27017
       name: lcmongo
   type: ClusterIP
 
