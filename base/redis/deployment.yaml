@@ -6,25 +6,25 @@ spec:
   selector:
     app: lc-assignment-redis
   ports:
-    - port: 6379
-      name: lcredis
+  - port: 6379
+    name: lcredis
   type: ClusterIP
----
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: lc-assignment-redis
-
   labels:
     app: lc-assignment-redis
 spec:
  volumeMounts:
-    - mountPath: /data
-      name: lc-assignment-redis-data
+  - mountPath: /data
+    name: lc-assignment-redis-data
   volumes:
-    - name: lc-assignment-redis-data
-      persistentVolumeClaim:
-        claimName: lc-assignment-redis-vol
+  - name: lc-assignment-redis-data
+    persistentVolumeClaim:
+      claimName: lc-assignment-redis-vol
   replicas: 1
   selector:
     matchLabels:
@@ -35,9 +35,9 @@ spec:
         app: lc-assignment-redis
     spec:
       containers:
-        - name: lc-assignment-redis
-          image: redis:6.2-alpine
-          ports:
-            - containerPort: 6379
-              name: lcredis
+      - name: lc-assignment-redis
+        image: redis:6.2-alpine
+        ports:
+          - containerPort: 6379
+            name: lcredis
 
