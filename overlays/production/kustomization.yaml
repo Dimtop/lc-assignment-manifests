@@ -11,4 +11,5 @@ resources:
   - ../../base
   ##
   - ingress/backend.ingress.yaml
-  - configs/backend.cm.yaml
+  - config/backend.cm.yaml
+
