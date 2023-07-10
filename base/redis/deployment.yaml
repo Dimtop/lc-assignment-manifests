@@ -33,11 +33,4 @@ spec:
           ports:
             - containerPort: 6379
               name: lcredis
-      volumeMounts:
-        - mountPath: /data
-          name: lc-assignment-redis-data
-      volumes:
-        - name: lc-assignment-redis-data
-          persistentVolumeClaim:
-          claimName: lc-assignment-redis-vol
 

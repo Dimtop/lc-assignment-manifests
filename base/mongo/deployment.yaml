@@ -33,11 +33,4 @@ spec:
           ports:
             - containerPort: 27017
               name: lcmongo
-      volumeMounts:
-        - mountPath: /data/db
-          name: lc-assignment-mongo-data
-      volumes:
-        - name: lc-assignment-mongo-data
-          persistentVolumeClaim:
-          claimName: lc-assignment-mongo-vol
 
