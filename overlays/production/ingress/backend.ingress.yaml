@@ -1,0 +1,47 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  # name doesn't matter, it's just a label
+  name: lc-assignment-ingress
+  # the namespace needs to be the same as the service
+  # that the ingress will try to reach.
+  # While it's possible to have a different namespace,
+  # it's not recommended.
+  # it is missing here of course since it's added by kustomize and/or argo.
+  annotations:
+    # do not touch this section
+    # you can add further annotations like max-body-size
+    # but removal or modification of these will break the ingress
+    cert-manager.io/cluster-issuer: le-prod
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+spec:
+  rules:
+    # this is the domain the ingress will respond to.
+    # the *.dev.myorderit.com domain is a wildcard domain
+    # and set to target the IP of the ingress controller
+    # i.e. don't try changing the domain to something else
+    # only modify the part before the "dev.myorderit.com"
+    - host: lc-assignment-backend.topcode.gr
+      http:
+        paths:
+          - backend:
+              service:
+                name: lc-assignment-backend
+                port:
+                  number: 5013
+            # if you want requests to target a different path
+            # you can change this. Typically you won't need to.
+            path: /
+            pathType: ImplementationSpecific
+
+  # This is the TLS section of the ingress.
+  # It's used to configure the TLS certificate that will be used,
+  # and for our case it auto-generates let's encrypt certificates
+  tls:
+    - hosts:
+        - lc-assignment-backend.topcode.gr
+      # this just needs to be unique, doesn't matter what you name it
+      secretName: lc-assignment-backend-tls
+
