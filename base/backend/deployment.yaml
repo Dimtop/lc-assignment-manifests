@@ -39,7 +39,7 @@ spec:
           # the image doesn't really matter, it's replaced in the overlays
           # you could write "my_image" and it would work just fine,
           # as long as you have a proper replacement in kustomization.yaml
-          image: registry.digitalocean.com/topcode/lc-assignment-backendy:latest
+          image: registry.digitalocean.com/topcode/lc-assignment-backend:latest
           ports:
             # not really required but work well for sanity
             - containerPort: 5013

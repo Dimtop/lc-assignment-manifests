@@ -4,4 +4,6 @@ kind: Kustomization
 resources:
   - redis/deployment.yaml
   - redis/pvc.yaml
+  - mongo/deployment.yaml
+  - mongo/pvc.yaml
 

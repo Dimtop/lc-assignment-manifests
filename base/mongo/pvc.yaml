@@ -1,12 +1,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: lc-assignment-redis-vol
+  name: lc-assignment-mongo-vol
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10M
+      storage: 50M
   storageClassName: rbd
 
