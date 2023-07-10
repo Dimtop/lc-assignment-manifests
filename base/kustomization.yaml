@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - redis/deployment.yaml
   - mongo/deployment.yaml
+  - backend/deployment.yaml
 
