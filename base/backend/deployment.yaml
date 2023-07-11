@@ -26,6 +26,8 @@ spec:
       labels:
         app: lc-assignment-backend
     spec:
+      imagePullSecrets:
+        - name: registry-credential
       containers:
         - name: lc-assignment-backend
           image: registry.digitalocean.com/topcode/lc-assignment-backend:latest
