@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: lc-assignment-mongo
-          image: redis:latest
+          image: mongo:latest
           ports:
             - containerPort: 27017
               name: lcmongo

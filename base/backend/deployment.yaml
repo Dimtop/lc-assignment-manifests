@@ -1,19 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  # this name is also used for DNS resolution ex. curl agora-auth-service.agorab2b.svc.cluster.local
-  # pattern is <service-name>.<namespace>.svc.cluster.local
-  # this is the name of the service that will be used by other services to communicate with this service
-  # you can also do curl http://agora-auth-service but this is only for inter-namespaced communication
   name: lc-assignment-backend
 spec:
   selector:
-    # this must always match the selector in the deployment section
     app: lc-assignment-backend
   ports:
-    # protocol is tcp in 99% of cases
-    # port defines the port where this service will be reachable
-    # target port is the port where the container is listening
     - protocol: TCP
       port: 5013
       targetPort: 5013
@@ -36,12 +28,8 @@ spec:
     spec:
       containers:
         - name: lc-assignment-backend
-          # the image doesn't really matter, it's replaced in the overlays
-          # you could write "my_image" and it would work just fine,
-          # as long as you have a proper replacement in kustomization.yaml
           image: registry.digitalocean.com/topcode/lc-assignment-backend:latest
           ports:
-            # not really required but work well for sanity
             - containerPort: 5013
           envFrom:
             - configMapRef:
